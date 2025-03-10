@@ -1,6 +1,6 @@
 function Aside(){
     return (
-        <section>
+        <section className="w-[400px] bg-blue-100 h-[100vh]">
             Aside
         </section>
     )
