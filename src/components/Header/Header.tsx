@@ -1,5 +1,7 @@
 import userIcon from "../../assets/user/user-icon.jpg";
 import { useState } from "react";
+import Search from "../Search/Search";
+import { BarsIcon, ChevronDownIcon } from "../Icons/Icons";
 
 function Header() {
   const [toogleHidden, setToogleHidden] = useState(true);
@@ -11,7 +13,6 @@ function Header() {
 
   const showHideMenu = () => {
     setHideMenu((prevState) => !prevState);
-    console.log(hideMenu)
   }
 
   return (
@@ -20,43 +21,12 @@ function Header() {
         <div className="relative grow grid items-center justify-center sm:justify-start">
           Logo
           <button className="absolute top-0 right-0 px-5 block sm:hidden" onClick={showHideMenu}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 448 512"
-              width="20"
-            >
-              <path
-                fill="white"
-                d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"
-              />
-            </svg>
+            <BarsIcon 
+            color={'#FFFFFF'}/>
           </button>
         </div>
         <div className={`grow items-center py-5 sm:py-0 ${hideMenu ? "hidden": ""}  sm:grid `}>
-          <div className="relative w-full">
-            <button className="absolute right-0 h-full flex items-center px-[20px] border z-10 hover:cursor-pointer">
-              <svg
-                className="w-4 h-4 text-gray-800 dark:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                />
-              </svg>
-            </button>
-            <input
-              type="text"
-              className="h-[60px] border rounded-xs w-full focus:outline-0 px-[20px] relative z-5"
-              placeholder="Search..."
-            />
-          </div>
+            <Search />          
         </div>
         <div className={`grow items-center justify-items-end ${hideMenu ? "hidden": ""} sm:grid`}>
           <div className="w-[50%] relative h-full flex items-center gap-5">
@@ -69,16 +39,8 @@ function Header() {
               className="h-full flex items-center hover:cursor-pointer"
               onClick={toogleBlock}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-                width="10"
-              >
-                <path
-                  d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
-                  fill="white"
-                />
-              </svg>
+                <ChevronDownIcon 
+                color={'#FFFFFF'}/>
             </button>
 
             <ul
