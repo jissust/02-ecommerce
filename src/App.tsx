@@ -8,7 +8,7 @@ function App() {
   return (
     <main>
       <Header />
-      <section className="flex">
+      <section className="flex container mx-auto">
         <Aside />
         <Body />
       </section>

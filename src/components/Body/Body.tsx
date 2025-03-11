@@ -1,9 +1,25 @@
-function Body(){
-    return (
-        <section>
-            Body
-        </section>
-    )
+import products from "../../mocks/products.json";
+
+function Body() {
+  console.log(products.products);
+  return (
+    <section className="p-5 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        {products.products.slice(0, 12).map((product) => {
+          return (
+            <a href="#" key={product.id} className="shadow-md">
+              <img src={product.images[0]} alt={product.title} />
+              <div className="p-5">
+              <small>{product.category.name}</small>
+              <h1 className="font-bold">{product.title}</h1>
+              <div>${product.price}</div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  );
 }
 
-export default Body
+export default Body;
