@@ -1,17 +1,19 @@
+import { ChangeEvent } from "react";
 import useFilters from "../../hooks/useFilters";
+import { Filter } from "../../type/type";
 
 function Filters() {
   const { filters, setFilters } = useFilters();
-
-  const handleChangeMaxPrice = (event) => {
-    setFilters((prevState) => ({
+  
+  const handleChangeMaxPrice = (event: ChangeEvent<HTMLInputElement>) => {
+    setFilters((prevState: Filter) => ({
       ...prevState,
       maxPrice: event?.target.value,
     }));
   };
 
-  const handleChangeCategory = (event) => {
-    setFilters((prevState) => ({
+  const handleChangeCategory = (event: ChangeEvent<HTMLSelectElement>) => {
+    setFilters((prevState: Filter) => ({
       ...prevState,
       category: event?.target.value,
     }));
