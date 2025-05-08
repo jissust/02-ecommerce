@@ -2,9 +2,10 @@ import { Product } from "../../type/type";
 import useFilters from "../../hooks/useFilters.tsx";
 import { useContext } from "react";
 import { ProductsContext } from "../../context/products.tsx";
+import { Link } from "react-router-dom";
 
 function Products() {
-  const {products, setProducts} = useContext(ProductsContext);
+  const { products, setProducts } = useContext(ProductsContext);
   const { filterProducts } = useFilters();
   const filteredProducts = filterProducts(products);
 
@@ -13,14 +14,18 @@ function Products() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
         {filteredProducts.slice(0, 20).map((product: Product) => {
           return (
-            <a href="#" key={product.id} className="shadow-md">
+            <Link
+              key={product.id}
+              className="shadow-md"
+              to={`/product/${product.id}`}
+            >
               <img src={product.images[0]} alt={product.title} />
               <div className="p-5">
-              <small>{product.category.name}</small>
-              <h1 className="font-bold">{product.title}</h1>
-              <div>${product.price}</div>
+                <small>{product.category.name}</small>
+                <h1 className="font-bold">{product.title}</h1>
+                <div>${product.price}</div>
               </div>
-            </a>
+            </Link>
           );
         })}
       </div>
