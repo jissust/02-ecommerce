@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ProductsContext } from "../../context/products";
+import Carousel from "../Carousel/Carousel";
 
 
 function ProductDetatil () {
@@ -9,15 +10,19 @@ function ProductDetatil () {
     const product = products.find(p => p.id === Number(id));
 
     return (
-        <div >
-            <section>
+        <div className="px-[150px]">
+            <section className="py-5">
                 Migas
             </section>
             <section>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                    <div>Galeria</div>
                     <div>
-                        <h1>{product.title}</h1>
+                        <Carousel images={product.images}/>
+                    </div>
+                    <div>
+                        <h1>
+                            {product.title}
+                        </h1>
                         <p>
                             {product.description}
                         </p>
