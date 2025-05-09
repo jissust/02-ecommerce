@@ -11,7 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 function App() {
   return (
     <Router>
-      <main>
+      <main className="overflow-hidden bg-gradient-to-br from-[#050A1D] to-[#0A1640]">
       <Header />
       <Routes>        
         <Route path="/" element={<Home />} />
