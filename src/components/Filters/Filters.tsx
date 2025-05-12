@@ -23,12 +23,11 @@ function Filters() {
     <div className="filters">
       <ul>
         <li className="pb-5">
-          <div>Precio:</div>
-          <div className="flex gap-4">
-            <div>Precio máximo:</div>
+          <div className="">
+            <label className="mb-2">Precio máximo:</label>
             <input
               type="text"
-              className="border"
+              className="bg-white h-[40px] rounded-[5px] px-[10px] mb-2 w-full"
               id="maxPrice"
               name="maxPrice"
               onChange={handleChangeMaxPrice}
@@ -39,11 +38,13 @@ function Filters() {
         </li>
         <li className="pb-5">
           <label>Categoría:</label>
-          <select id="category" name="category" onChange={handleChangeCategory}>
+          <div>
+          <select id="category" name="category" onChange={handleChangeCategory} className="w-full bg-white h-[40px] rounded-[5px] px-[10px] my-2">
             <option value="all">Todos</option>
             <option value="Clothes">Clothes</option>
             <option value="Electronics">Electronics</option>
           </select>
+          </div>
         </li>
       </ul>
     </div>

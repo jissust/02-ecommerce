@@ -10,7 +10,7 @@ function ProductDetatil () {
     const product = products.find(p => p.id === Number(id));
 
     return (
-        <div className="px-[150px] py-[90px]">
+        <div className="container mx-auto py-[90px]">
             <section className="py-5">
                 Migas
             </section>

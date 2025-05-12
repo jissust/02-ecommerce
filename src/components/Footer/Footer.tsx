@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer className="w-full bg-gray-500 pt-[100px] px-[30px]">
-      <div className=" grid grid-cols-1 sm:grid-cols-2 max-w-[1300px] m-auto pb-[100px] border-b">
+      <div className=" grid grid-cols-1 sm:grid-cols-2 container m-auto pb-[100px] border-b">
         <div>
           <h1>Logo</h1>
           <p>
@@ -23,14 +23,14 @@ function Footer() {
             <form action="">
               <div>
                 <input
-                  className="h-[40px] bg-white mb-3 w-full rounded-md"
+                  className="h-[40px] rounded-[5px] bg-white mb-3 w-full px-[10px]"
                   type="text"
                   name="name"
                 />
               </div>
               <div>
                 <input
-                  className="h-[40px] bg-white mb-3 w-full rounded-md"
+                  className="h-[40px] rounded-[5px] bg-white mb-3 w-full px-[10px]"
                   type="text"
                   name="email"
                 />
@@ -43,21 +43,13 @@ function Footer() {
         </div>
       </div>
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 pb-[100px] pt-[50px] max-w-[1300px] m-auto">
-        <div>
-        Templune 2022 | Todos los derechos reservados
-        </div>
+        <div>Templune 2022 | Todos los derechos reservados</div>
         <div className="flex justify-start sm:justify-end">
-            <ul className="flex gap-5">
-                <li>
-                    instagram
-                </li>
-                <li>
-                    Youtube
-                </li>
-                <li>
-                    Linkedin
-                </li>
-            </ul>
+          <ul className="flex gap-5">
+            <li>instagram</li>
+            <li>Youtube</li>
+            <li>Linkedin</li>
+          </ul>
         </div>
       </div>
     </footer>

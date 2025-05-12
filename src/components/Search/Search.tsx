@@ -29,7 +29,7 @@ function Search() {
       <input
         type="text"
         className="h-[60px] border rounded-xs w-full focus:outline-0 px-[20px] relative z-5"
-        placeholder="Search..."
+        placeholder="Buscar..."
         value={searchValue}
         onChange={handleInputChange}
       />
