@@ -23,8 +23,8 @@ function Home () {
         <section id="home-carousel" className="slider-container">
             <Carousel images={images} autoplay={true} dots={false}/>
         </section>
-        <section className="slider-container">
-            <h1 className="text-center">Categorías</h1>
+        <section className="slider-container py-[60px]">
+            <h1 className="text-center pb-[30px]">Categorías</h1>
             <Carousel images={categories} autoplay={true} type="text" slidesToShow={6} speed={3000} dots={false} />
         </section>
         </section>

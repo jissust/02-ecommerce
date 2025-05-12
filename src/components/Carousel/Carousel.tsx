@@ -32,8 +32,10 @@ function Carousel({
       {images.map((img, index) => (
         <div key={index}>
           {type === "text" ? (
-            <div className="w-full h-[50px] flex items-center justify-center bg-gray-800 text-white text-4xl">
+            <div className="w-[200px] h-[200px] flex items-center justify-center bg-gray-500 text-white text-4xl rounded-[50%]">
+              <h2>
               {img}
+              </h2>
             </div>
           ) : (
             <img
