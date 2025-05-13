@@ -8,7 +8,7 @@ function ProductDetatil () {
     const {id} = useParams();
     const {products} = useContext(ProductsContext);
     const product = products.find(p => p.id === Number(id));
-
+    
     return (
         <div className="container mx-auto py-[90px]">
             <section className="py-5">
@@ -20,16 +20,18 @@ function ProductDetatil () {
                         <Carousel images={product.images}/>
                     </div>
                     <div>
-                        <h1>
+                        <small>{product.category.name}</small>
+                        <h1 >
                             {product.title}
                         </h1>
-                        <p>
+                        <h2 className="mb-[20px]">$ {product.price}</h2>    
+                        <p className="mb-[20px]">
                             {product.description}
                         </p>
-                        <div>
+                        <div className="mb-[20px]">
                             Variantes: talle, color.
                         </div>
-                        <button>
+                        <button className="bg-black text-white px-[25px] py-[20px] rounded-xl cursor-pointer">
                             Agregar al carrito
                         </button>
                     </div>
