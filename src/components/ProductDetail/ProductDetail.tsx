@@ -3,12 +3,15 @@ import { useParams } from "react-router-dom";
 import { ProductsContext } from "../../context/products";
 import Carousel from "../Carousel/Carousel";
 import MercaPagoButton from "../MercadoPagoButton/MercadoPagoButton";
+import { CartContext } from "../../context/cart";
+
 
 function ProductDetatil() {
-  const [preferenceId, setPreferenceId] = useState("");
-  const [cart, setCart] = useState([]);
   const { id } = useParams();
+  const [preferenceId, setPreferenceId] = useState("");
+  const {cart, setCart} = useContext(CartContext)
   const { products } = useContext(ProductsContext);
+  
   const product = products.find((p) => p.id === Number(id));
 
   const createPreference = () => {
