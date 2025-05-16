@@ -56,7 +56,7 @@ function Checkout() {
             <span>Total Final</span>
             <span>${totalFinal}</span>
           </div>
-          <PagoButton products={cart} />
+          { cart.length > 0 && <PagoButton products={cart} /> }
         </div>
       </div>
     </div>
