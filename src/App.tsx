@@ -8,6 +8,9 @@ import ProductDetatil from "./components/ProductDetail/ProductDetail";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Checkout from "./components/Checkout/Checkout";
+import Failure from "./components/Redirect/failure";
+import Pending from "./components/Redirect/Pending";
+import Success from "./components/Redirect/Success";
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
         <Route path="/Shop" element={<Shop />} />
         <Route path="/product/:id" element={<ProductDetatil />} />
         <Route path="/checkout" element={<Checkout/>} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/pending" element={<Pending />} />
+        <Route path="/failure" element={<Failure />} />
       </Routes>
       <Footer />
       </main>
