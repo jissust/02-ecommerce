@@ -5,7 +5,10 @@ function MercaPagoButton({preferenceIdProduct}) {
 
   useEffect(() => {
     if (preferenceId) {
-      const mp = new window.MercadoPago("APP_USR-42075aba-8016-40a8-b14a-89c0a4846501", {
+      const publicKey = import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY;
+
+      const mp = new window.MercadoPago(
+        publicKey, {
         locale: "es-AR",
       });
 
