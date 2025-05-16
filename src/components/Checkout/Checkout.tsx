@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/cart";
 import PagoButton from "../PagoButton/PagoButton";
+import { RemoveIcon } from "../Icons/Icons";
 
 function Checkout() {
   const { cart, setCart } = useContext(CartContext);
@@ -26,14 +27,14 @@ function Checkout() {
             <span>Producto</span>
             <span>Cantidad</span>
             <span>Precio</span>
-            <span>x</span>
+            <span>#</span>
           </div>
           {cart.map((item, index) => (
             <div key={index} className="grid grid-cols-4 gap-4 py-2 border-b">
               <span>{item.title}</span>
               <span>{item.quantity}</span>
               <span>${item.price}</span>
-              <span><button onClick={() => removeFromCart(index)}>remove</button></span>
+              <span><button onClick={() => removeFromCart(index)}><RemoveIcon /></button></span>
             </div>
           ))}
           {cart.length === 0 && <div className="w-full text-center p-5">No hay productos.</div>}
