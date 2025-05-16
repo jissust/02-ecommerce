@@ -3,7 +3,7 @@ import { CartContext } from "../../context/cart";
 import PagoButton from "../PagoButton/PagoButton";
 
 function Checkout() {
-  const { cart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
 
   const resumen = cart.map((item) => ({
     title: item.title,
@@ -12,23 +12,31 @@ function Checkout() {
 
   const totalFinal = resumen.reduce((acc, curr) => acc + curr.total, 0);
 
+  const removeFromCart = (indexToRemove) => {
+    const updatedCart = cart.filter((_, index) => index !== indexToRemove);
+    setCart(updatedCart);
+  };
+
   return (
     <div className="container mx-auto py-10 px-4">
       <div className="grid grid-cols-4 gap-6">
         <div className="col-span-3">
           <h2 className="text-xl font-semibold mb-4">Tu Carrito</h2>
-          <div className="grid grid-cols-3 gap-4 border-b font-semibold pb-2">
+          <div className="grid grid-cols-4 gap-4 border-b font-semibold pb-2">
             <span>Producto</span>
             <span>Cantidad</span>
             <span>Precio</span>
+            <span>x</span>
           </div>
           {cart.map((item, index) => (
-            <div key={index} className="grid grid-cols-3 gap-4 py-2 border-b">
+            <div key={index} className="grid grid-cols-4 gap-4 py-2 border-b">
               <span>{item.title}</span>
               <span>{item.quantity}</span>
               <span>${item.price}</span>
+              <span><button onClick={() => removeFromCart(index)}>remove</button></span>
             </div>
           ))}
+          {cart.length === 0 && <div className="w-full text-center p-5">No hay productos.</div>}
         </div>
 
         <div className="col-span-1 border p-4 rounded-lg shadow-md">
