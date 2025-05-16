@@ -34,7 +34,7 @@ function Checkout() {
               <span>{item.title}</span>
               <span>{item.quantity}</span>
               <span>${item.price}</span>
-              <span><button onClick={() => removeFromCart(index)}><RemoveIcon /></button></span>
+              <span><button onClick={() => removeFromCart(index)}><RemoveIcon color="#000000" /></button></span>
             </div>
           ))}
           {cart.length === 0 && <div className="w-full text-center p-5">No hay productos.</div>}

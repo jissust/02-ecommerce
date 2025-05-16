@@ -1,21 +1,23 @@
-import { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { ProductsContext } from "../../context/products";
 import { CartContext } from "../../context/cart";
 import Carousel from "../Carousel/Carousel";
 import PagoButton from "../PagoButton/PagoButton";
+import { CartIcon } from "../Icons/Icons";
 
 function ProductDetatil() {
   const { id } = useParams();
-  const {cart, setCart} = useContext(CartContext)
+  const { cart, setCart } = useContext(CartContext);
   const { products } = useContext(ProductsContext);
-  
+  const navigate = useNavigate();
   const product = products.find((p) => p.id === Number(id));
 
   const addCart = () => {
-    const productWithQuantity = {...product, quantity:1};
+    const productWithQuantity = { ...product, quantity: 1 };
     setCart((prevCart) => [...prevCart, productWithQuantity]);
-  }
+    navigate("/checkout");
+  };
 
   return (
     <div className="container mx-auto py-[90px]">
@@ -31,8 +33,13 @@ function ProductDetatil() {
             <h2 className="mb-[20px]">$ {product.price}</h2>
             <p className="mb-[20px]">{product.description}</p>
             <div className="mb-[20px]">Variantes: talle, color.</div>
-            <button onClick={addCart}>addCart</button>
-            <PagoButton products={[product]} />
+            <button
+              onClick={addCart}
+              className="flex gap-3 bg-black text-white px-[25px] py-[20px] rounded-xl cursor-pointer"
+            >
+              Agregar al carro <CartIcon />
+            </button>
+            {/*<PagoButton products={[product]} />*/}
           </div>
         </div>
       </section>

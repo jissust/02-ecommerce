@@ -8,7 +8,7 @@ function CartButton() {
 
   return (
     <Link to="/checkout" className="px-5 flex gap-2 relative">
-      <CartIcon />
+      <CartIcon color="#000000" />
       <div
       className={`w-[20px] text-[12px] text-white text-center rounded-full border absolute top-[-10px] right-[6px] font-extrabold 
         ${cart.length === 0 ? "bg-gray-700":"bg-[#ff0000]"}`}
