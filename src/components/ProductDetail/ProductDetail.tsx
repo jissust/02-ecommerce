@@ -1,39 +1,21 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ProductsContext } from "../../context/products";
-import Carousel from "../Carousel/Carousel";
-import MercaPagoButton from "../MercadoPagoButton/MercadoPagoButton";
 import { CartContext } from "../../context/cart";
-
+import Carousel from "../Carousel/Carousel";
+import PagoButton from "../PagoButton/PagoButton";
 
 function ProductDetatil() {
   const { id } = useParams();
-  const [preferenceId, setPreferenceId] = useState("");
   const {cart, setCart} = useContext(CartContext)
   const { products } = useContext(ProductsContext);
   
   const product = products.find((p) => p.id === Number(id));
 
-  const createPreference = () => {
-    fetch("http://localhost:3000/create_preference", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({products: cart}),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setPreferenceId(data.id);
-      });
-  };
-
   const addCart = () => {
-    setCart((prevCart) => [...prevCart, product]);
+    const productWithQuantity = {...product, quantity:1};
+    setCart((prevCart) => [...prevCart, productWithQuantity]);
   }
-
-  useEffect(() => {
-    console.log("valor cart:")
-    console.log(cart)
-  }, [cart]);
 
   return (
     <div className="container mx-auto py-[90px]">
@@ -49,16 +31,8 @@ function ProductDetatil() {
             <h2 className="mb-[20px]">$ {product.price}</h2>
             <p className="mb-[20px]">{product.description}</p>
             <div className="mb-[20px]">Variantes: talle, color.</div>
-            <button
-              className="bg-black text-white px-[25px] py-[20px] rounded-xl cursor-pointer"
-              onClick={createPreference}
-            >
-              Comprar
-            </button>
             <button onClick={addCart}>addCart</button>
-            {preferenceId && (
-              <MercaPagoButton preferenceIdProduct={preferenceId} />
-            )}
+            <PagoButton products={[product]} />
           </div>
         </div>
       </section>

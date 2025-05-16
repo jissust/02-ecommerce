@@ -1,13 +1,14 @@
 import { useContext, useEffect } from "react";
 import { CartContext } from "../../context/cart";
+import { Link } from "react-router-dom";
 
-function CartButton () {
-    const {cart, setCart} = useContext(CartContext);
+function CartButton() {
+  const { cart, setCart } = useContext(CartContext);
 
-    return (
-        <>
-        {cart.length}
-        </>
-    )
+  return (
+    <Link to="/checkout" className="px-5">
+      {cart.length}
+    </Link>
+  );
 }
 export default CartButton;
