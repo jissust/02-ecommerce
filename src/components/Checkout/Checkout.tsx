@@ -28,7 +28,7 @@ function Checkout() {
   };
 
   return (
-    <div className="container mx-auto py-10 px-4">
+    <div className="container mx-auto pb-[50px] px-4">
       <div className="grid grid-cols-4 gap-6">
         <div className="col-span-3">
           <h2 className="text-xl font-semibold mb-4">Tu Carrito</h2>

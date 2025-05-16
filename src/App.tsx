@@ -15,7 +15,7 @@ import Success from "./components/Redirect/Success";
 function App() {
   return (
     <Router>
-      <main className="overflow-hidden bg-gray-300">
+      <main className="overflow-hidden bg-gray-300 py-[90px]">
       <Header />
       <Routes>        
         <Route path="/" element={<Home />} />
