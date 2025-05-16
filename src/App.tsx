@@ -8,7 +8,7 @@ import ProductDetatil from "./components/ProductDetail/ProductDetail";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Checkout from "./components/Checkout/Checkout";
-import Failure from "./components/Redirect/failure";
+import Failure from "./components/Redirect/Failure";
 import Pending from "./components/Redirect/Pending";
 import Success from "./components/Redirect/Success";
 

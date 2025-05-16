@@ -18,6 +18,15 @@ function Checkout() {
     setCart(updatedCart);
   };
 
+  const updateQuantity = (indexToUpdate, newQuantity) => {
+    const updatedCart = cart.map((item, index) =>
+      index === indexToUpdate
+        ? { ...item, quantity: Number(newQuantity) }
+        : item
+    );
+    setCart(updatedCart);
+  };
+
   return (
     <div className="container mx-auto py-10 px-4">
       <div className="grid grid-cols-4 gap-6">
@@ -32,7 +41,13 @@ function Checkout() {
           {cart.map((item, index) => (
             <div key={index} className="grid grid-cols-4 gap-4 py-2 border-b">
               <span>{item.title}</span>
-              <span>{item.quantity}</span>
+              <span><input
+                type="number"
+                min="1"
+                className="border px-2 py-1 rounded w-16 bg-white text-center"
+                value={item.quantity}
+                onChange={(e) => updateQuantity(index, e.target.value)}
+              /></span>
               <span>${item.price}</span>
               <span><button onClick={() => removeFromCart(index)}><RemoveIcon color="#000000" /></button></span>
             </div>

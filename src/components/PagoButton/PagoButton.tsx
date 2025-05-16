@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MercaPagoButton from "../MercadoPagoButton/MercadoPagoButton";
+import { CartContext } from "../../context/cart";
 
 function PagoButton({ products }) {
+  const { cart } = useContext(CartContext)
   const [preferenceId, setPreferenceId] = useState("");
+  
   const createPreference = () => {
     fetch("http://localhost:3000/create_preference", {
       method: "POST",
@@ -14,6 +17,11 @@ function PagoButton({ products }) {
         setPreferenceId(data.id);
       });
   };
+
+  useEffect(() => {
+    setPreferenceId("")
+  }, [cart]);
+
   return (
     <>
       <button
