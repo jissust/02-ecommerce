@@ -4,7 +4,7 @@ import Search from "../Search/Search.tsx";
 
 function Shop() {
   return (
-    <section className="flex container mx-auto pb-[50px] grid grid-cols-1 xl:grid-cols-[20%_80%]">
+    <section className="flex container mx-auto pb-[50px] grid grid-cols-1 xl:grid-cols-[20%_80%] py-[90px]">
       <div><Aside /></div>
       <div className="px-5">
         <Search />

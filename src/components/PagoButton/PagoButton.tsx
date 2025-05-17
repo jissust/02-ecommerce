@@ -25,7 +25,7 @@ function PagoButton({ products }) {
   return (
     <>
       <button
-        className="bg-black text-white px-[25px] py-[20px] rounded-xl cursor-pointer"
+        className="w-full bg-black text-white px-[25px] py-[20px] rounded-xl cursor-pointer"
         onClick={createPreference}
       >
         Comprar ahora

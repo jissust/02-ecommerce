@@ -8,13 +8,21 @@ function Carousel({
   slidesToShow,
   speed,
   dots,
+  responsive
 }: {
   images: string[];
   autoplay?: boolean;
   type?: string;
   slidesToShow?:number;
   speed?:number;
-  dots?:boolean
+  dots?:boolean;
+  responsive?: {
+    breakpoint: number;
+    settings: {
+      slidesToShow: number;
+      slidesToScroll: number;
+    };
+  }[];
 }) {
   const settings = {
     dots: dots ?? true,
@@ -25,6 +33,7 @@ function Carousel({
     speed: speed ?? 2000,
     autoplaySpeed: 4000,
     pauseOnHover: false,
+    responsive: responsive ?? []
   };
 
   return (
@@ -32,7 +41,7 @@ function Carousel({
       {images.map((img, index) => (
         <div key={index}>
           {type === "text" ? (
-            <div className="w-[200px] h-[200px] flex items-center justify-center bg-gray-500 text-white text-4xl rounded-[50%]">
+            <div className="w-[200px] h-[200px] flex items-center justify-center bg-gray-500 text-white text-4xl rounded-[50%] mx-auto">
               <h2>
               {img}
               </h2>
@@ -41,7 +50,7 @@ function Carousel({
             <img
               src={img}
               alt={`slide-${index}`}
-              className="w-full h-auto object-cover"
+              className="w-full h-auto md:h-[100dvh] object-cover"
             />
           )}
         </div>

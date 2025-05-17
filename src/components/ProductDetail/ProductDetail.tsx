@@ -20,7 +20,7 @@ function ProductDetatil() {
   };
 
   return (
-    <div className="container mx-auto pb-[50px]">
+    <div className="container mx-auto pb-[50px] px-[30px] py-[90px]">
       <section className="py-5">Migas</section>
       <section>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">

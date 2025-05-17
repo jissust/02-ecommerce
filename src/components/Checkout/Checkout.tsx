@@ -28,8 +28,8 @@ function Checkout() {
   };
 
   return (
-    <div className="container mx-auto pb-[50px] px-4">
-      <div className="grid grid-cols-4 gap-6">
+    <div className="container mx-auto pb-[50px] px-[30px] py-[90px]">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="col-span-3">
           <h2 className="text-xl font-semibold mb-4">Tu Carrito</h2>
           <div className="grid grid-cols-4 gap-4 border-b font-semibold pb-2">
@@ -55,7 +55,7 @@ function Checkout() {
           {cart.length === 0 && <div className="w-full text-center p-5">No hay productos.</div>}
         </div>
 
-        <div className="col-span-1 border p-4 rounded-lg shadow-md">
+        <div className="col-span-3 md:col-span-1 border p-4 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold mb-4">Resumen</h2>
           <div className="grid grid-cols-2 gap-2 border-b font-semibold pb-2">
             <span>Producto</span>
@@ -67,7 +67,7 @@ function Checkout() {
               <span>${item.total}</span>
             </div>
           ))}
-          <div className="grid grid-cols-2 gap-2 mt-4 border-t pt-2 font-bold">
+          <div className="grid grid-cols-2 gap-2 mt-4 border-t pt-2 font-bold mb-5">
             <span>Total Final</span>
             <span>${totalFinal}</span>
           </div>
