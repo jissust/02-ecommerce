@@ -5,7 +5,7 @@ import { ProductsContext } from "../../context/products.tsx";
 import { Link } from "react-router-dom";
 
 function Products() {
-  const { products, setProducts } = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
   const { filterProducts } = useFilters();
   const filteredProducts = filterProducts(products);
 

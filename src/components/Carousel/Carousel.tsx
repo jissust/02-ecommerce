@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
 function Carousel({
@@ -42,11 +43,13 @@ function Carousel({
         
         <div key={index}>
           {type === "text" ? (
-            <div className="w-[200px] h-[200px] flex items-center justify-center bg-gray-500 text-white text-4xl rounded-[50%] mx-auto">
+            <Link to={`/category/${images[index].id}`}>
+            <div className="w-[200px] h-[200px] flex items-center justify-center bg-gray-500 text-white text-4xl rounded-[50%] mx-auto cursor-pointer">
               <h2>
               {images[index].title }
               </h2>
             </div>
+            </Link>
           ) : (
             <img
               src={img}

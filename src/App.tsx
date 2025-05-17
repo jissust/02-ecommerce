@@ -11,6 +11,7 @@ import Checkout from "./components/Checkout/Checkout";
 import Failure from "./components/Redirect/Failure";
 import Pending from "./components/Redirect/Pending";
 import Success from "./components/Redirect/Success";
+import Category from "./components/Category/Category";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/success" element={<Success />} />
         <Route path="/pending" element={<Pending />} />
         <Route path="/failure" element={<Failure />} />
+        <Route path="/category/:id" element={<Category />}/>
       </Routes>
       <Footer />
       </main>

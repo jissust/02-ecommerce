@@ -12,18 +12,18 @@
         },
         {
             "id":3,
-            "title":"Remeras",
-            "name":"remeras"
+            "title":"Furniture",
+            "name":"furniture"
         },
         {
             "id":4,
-            "title":"Buzos",
-            "name":"buzos"
+            "title":"Shoes",
+            "name":"shoes"
         },
         {
             "id":5,
-            "title":"Shorts",
-            "name":"shorts"
+            "title":"Miscellaneous",
+            "name":"miscellaneous"
         },
         {
             "id":6,
