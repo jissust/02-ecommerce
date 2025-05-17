@@ -38,12 +38,13 @@ function Carousel({
 
   return (
     <Slider {...settings}>
-      {images.map((img, index) => (
+      {images.map((img, index) => ( 
+        
         <div key={index}>
           {type === "text" ? (
             <div className="w-[200px] h-[200px] flex items-center justify-center bg-gray-500 text-white text-4xl rounded-[50%] mx-auto">
               <h2>
-              {img}
+              {images[index].title }
               </h2>
             </div>
           ) : (

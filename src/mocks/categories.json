@@ -1,0 +1,44 @@
+{
+    "categories": [
+        {
+            "id":1,
+            "title":"Clothes",
+            "name":"clothes"
+        },
+        {
+            "id":2,
+            "title":"Electronics",
+            "name":"electronics"
+        },
+        {
+            "id":3,
+            "title":"Remeras",
+            "name":"remeras"
+        },
+        {
+            "id":4,
+            "title":"Buzos",
+            "name":"buzos"
+        },
+        {
+            "id":5,
+            "title":"Shorts",
+            "name":"shorts"
+        },
+        {
+            "id":6,
+            "title":"Musculosa",
+            "name":"musculosa"
+        },
+        {
+            "id":7,
+            "title":"Pantalones",
+            "name":"pantalones"
+        },
+        {
+            "id":8,
+            "title":"Camperas",
+            "name":"camperas"
+        }
+    ]
+}

@@ -1,5 +1,6 @@
 import Carousel from "../Carousel/Carousel";
 import "./Home.css";
+import {categories} from "../../mocks/categories.json";
 
 function Home() {
   const images = [
@@ -8,7 +9,7 @@ function Home() {
     "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
   ];
 
-  const categories = [
+  /*const categories = [
     "Categoria 1",
     "Categoria 2",
     "Categoria 3",
@@ -17,7 +18,8 @@ function Home() {
     "Categoria 6",
     "Categoria 7",
     "Categoria 8",
-  ];
+  ];*/
+  
   return (
     <section>
       <section id="home-carousel" className="slider-container">
