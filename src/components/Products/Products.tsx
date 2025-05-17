@@ -8,7 +8,7 @@ function Products() {
   const { products } = useContext(ProductsContext);
   const { filterProducts } = useFilters();
   const filteredProducts = filterProducts(products);
-
+  
   return (
     <section className="py-5 w-full">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
@@ -28,6 +28,7 @@ function Products() {
             </Link>
           );
         })}
+        { filteredProducts.length === 0 && <h3 className="col-span-4 w-full text-center">No hay productos cargados para esta categoria.</h3>}
       </div>
     </section>
   );

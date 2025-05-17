@@ -16,8 +16,8 @@ import Category from "./components/Category/Category";
 function App() {
   return (
     <Router>
-      <main className="overflow-hidden bg-gray-300">
       <Header />
+      <main className="overflow-hidden bg-gray-300">
       <Routes>        
         <Route path="/" element={<Home />} />
         <Route path="/Shop" element={<Shop />} />
@@ -28,8 +28,8 @@ function App() {
         <Route path="/failure" element={<Failure />} />
         <Route path="/category/:id" element={<Category />}/>
       </Routes>
-      <Footer />
       </main>
+      <Footer />
     </Router>
   );
 }
