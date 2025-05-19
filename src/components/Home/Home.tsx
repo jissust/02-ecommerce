@@ -8,15 +8,25 @@ function Home() {
   const { products } = useContext(ProductsContext);
 
   const images = [
-    "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
-    "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
-    "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
+    {
+      url: "/product/1",
+      image: "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg"
+    },
+    {
+      url: "/product/2",
+      image: "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg"
+    },
+    {
+      url: "/product/3",
+      image: "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg"
+    },
   ];
   
   return (
     <section>
       <section id="home-carousel" className="slider-container">
         <Carousel
+          type="home"
           images={images}
           autoplay={true}
           dots={false}

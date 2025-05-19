@@ -59,10 +59,23 @@ function Carousel({
                   <small className="text-gray-500">
                     {images[index].category.name}
                   </small>
-                  <h3 className="font-bold">  {images[index].title.length > 30 ? `${images[index].title.slice(0, 30)}...` : images[index].title}</h3>
+                  <h3 className="font-bold">
+                    {" "}
+                    {images[index].title.length > 30
+                      ? `${images[index].title.slice(0, 30)}...`
+                      : images[index].title}
+                  </h3>
                   <div>${images[index].price}</div>
                 </div>
               </div>
+            </Link>
+          ) : type == "home" ? (
+            <Link to={img.url} className="cursor-pointer">
+              <img
+                src={img.image}
+                alt={`slide-${index}`}
+                className="w-full h-auto md:h-[100dvh] object-cover"
+              />
             </Link>
           ) : (
             <img
