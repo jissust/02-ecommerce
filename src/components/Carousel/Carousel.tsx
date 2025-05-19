@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import Card from "../Card/Card";
 
 function Carousel({
   images,
@@ -48,27 +49,7 @@ function Carousel({
               </div>
             </Link>
           ) : type == "card" ? (
-            <Link
-              key={images[index].id}
-              className="shadow-md"
-              to={`/product/${images[index].id}`}
-            >
-              <div className="px-3 ">
-                <img src={images[index].images[0]} alt={images[index].title} />
-                <div className="p-5 bg-white">
-                  <small className="text-gray-500">
-                    {images[index].category.name}
-                  </small>
-                  <h3 className="font-bold">
-                    {" "}
-                    {images[index].title.length > 30
-                      ? `${images[index].title.slice(0, 30)}...`
-                      : images[index].title}
-                  </h3>
-                  <div>${images[index].price}</div>
-                </div>
-              </div>
-            </Link>
+            <Card product={images[index]} />
           ) : type == "home" ? (
             <Link to={img.url} className="cursor-pointer">
               <img

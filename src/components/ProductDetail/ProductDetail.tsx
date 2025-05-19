@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ProductsContext } from "../../context/products";
 import { CartContext } from "../../context/cart";
 import Carousel from "../Carousel/Carousel";
-import PagoButton from "../PagoButton/PagoButton";
 import { CartIcon } from "../Icons/Icons";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
