@@ -11,7 +11,7 @@ function ProductDetatil() {
   const { id } = useParams();
   const { cart, setCart } = useContext(CartContext);
   const { products } = useContext(ProductsContext);
-  
+
   const navigate = useNavigate();
   const product = products.find((p) => p.id === Number(id));
 
@@ -41,7 +41,6 @@ function ProductDetatil() {
             >
               Agregar al carro <CartIcon />
             </button>
-            {/*<PagoButton products={[product]} />*/}
           </div>
         </div>
       </section>

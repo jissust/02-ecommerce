@@ -6,7 +6,7 @@ import { ProductsContext } from "../../context/products";
 
 function Home() {
   const { products } = useContext(ProductsContext);
-  console.log(products)
+
   const images = [
     "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
     "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
@@ -73,7 +73,7 @@ function Home() {
         <h1 className="text-center pb-[30px]">Ultimos productos</h1>
         <div className="container mx-auto">
         <Carousel
-          images={products}
+          images={products.slice(-6)}
           autoplay={true}
           type="card"
           slidesToShow={4}
