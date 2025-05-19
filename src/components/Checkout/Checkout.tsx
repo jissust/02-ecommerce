@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/cart";
 import PagoButton from "../PagoButton/PagoButton";
 import { RemoveIcon } from "../Icons/Icons";
+import CheckoutDetail from "../CheckoutDetail/CheckoutDetail";
 
 function Checkout() {
   const { cart, setCart } = useContext(CartContext);
@@ -13,46 +14,11 @@ function Checkout() {
 
   const totalFinal = resumen.reduce((acc, curr) => acc + curr.total, 0);
 
-  const removeFromCart = (indexToRemove) => {
-    const updatedCart = cart.filter((_, index) => index !== indexToRemove);
-    setCart(updatedCart);
-  };
-
-  const updateQuantity = (indexToUpdate, newQuantity) => {
-    const updatedCart = cart.map((item, index) =>
-      index === indexToUpdate
-        ? { ...item, quantity: Number(newQuantity) }
-        : item
-    );
-    setCart(updatedCart);
-  };
-
   return (
     <div className="container mx-auto pb-[50px] px-[30px] py-[90px]">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="col-span-3">
-          <h2 className="text-xl font-semibold mb-4">Tu Carrito</h2>
-          <div className="grid grid-cols-4 gap-4 border-b font-semibold pb-2">
-            <span>Producto</span>
-            <span>Cantidad</span>
-            <span>Precio</span>
-            <span>#</span>
-          </div>
-          {cart.map((item, index) => (
-            <div key={index} className="grid grid-cols-4 gap-4 py-2 border-b">
-              <span>{item.title}</span>
-              <span><input
-                type="number"
-                min="1"
-                className="border px-2 py-1 rounded w-16 bg-white text-center"
-                value={item.quantity}
-                onChange={(e) => updateQuantity(index, e.target.value)}
-              /></span>
-              <span>${item.price}</span>
-              <span><button onClick={() => removeFromCart(index)}><RemoveIcon color="#000000" /></button></span>
-            </div>
-          ))}
-          {cart.length === 0 && <div className="w-full text-center p-5">No hay productos.</div>}
+          <CheckoutDetail />
         </div>
 
         <div className="col-span-3 md:col-span-1 border p-4 rounded-lg shadow-md">
