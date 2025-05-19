@@ -1,3 +1,5 @@
+import { InstagramIcon, LinkedinIcon, YoutubeIcon } from "../Icons/Icons";
+
 function Footer() {
   return (
     <footer className="w-full bg-gray-500 pt-[100px] px-[30px]">
@@ -42,13 +44,13 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 pb-[100px] pt-[50px] max-w-[1300px] m-auto">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 pb-[100px] pt-[50px] container m-auto">
         <div>Templune 2022 | Todos los derechos reservados</div>
         <div className="flex justify-start sm:justify-end">
           <ul className="flex gap-5">
-            <li>instagram</li>
-            <li>Youtube</li>
-            <li>Linkedin</li>
+            <li className="flex"><InstagramIcon /></li>
+            <li className="flex"><YoutubeIcon /></li>
+            <li className="flex"><LinkedinIcon /></li>
           </ul>
         </div>
       </div>
