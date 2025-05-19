@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/cart";
 import { Link } from "react-router-dom";
 import { CartIcon } from "../Icons/Icons";
@@ -9,7 +9,6 @@ function CartButton() {
   const [menuCart, setMenuCart] = useState(false);
 
   const OpenCloseMenuCart = () => {
-    console.log(menuCart);
     setMenuCart(!menuCart);
   };
 

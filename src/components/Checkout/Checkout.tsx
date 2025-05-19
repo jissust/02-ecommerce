@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/cart";
 import PagoButton from "../PagoButton/PagoButton";
-import { RemoveIcon } from "../Icons/Icons";
 import CheckoutDetail from "../CheckoutDetail/CheckoutDetail";
 
 function Checkout() {
@@ -37,7 +36,7 @@ function Checkout() {
             <span>Total Final</span>
             <span>${totalFinal}</span>
           </div>
-          { cart.length > 0 && <PagoButton products={cart} /> }
+          {cart.length > 0 && <PagoButton products={cart} />}
         </div>
       </div>
     </div>
