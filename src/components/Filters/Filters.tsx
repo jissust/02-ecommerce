@@ -1,10 +1,11 @@
 import { ChangeEvent } from "react";
 import useFilters from "../../hooks/useFilters";
 import { Filter } from "../../type/type";
+import { categories } from "../../mocks/categories.json";
 
 function Filters() {
   const { filters, setFilters } = useFilters();
-  
+  console.log(categories);
   const handleChangeMaxPrice = (event: ChangeEvent<HTMLInputElement>) => {
     setFilters((prevState: Filter) => ({
       ...prevState,
@@ -39,11 +40,21 @@ function Filters() {
         <li className="pb-5">
           <label>Categoría:</label>
           <div>
-          <select id="category" name="category" onChange={handleChangeCategory} className="w-full bg-white h-[40px] rounded-[5px] px-[10px] my-2">
-            <option value="all">Todos</option>
-            <option value="Clothes">Clothes</option>
-            <option value="Electronics">Electronics</option>
-          </select>
+            <select
+              id="category"
+              name="category"
+              onChange={handleChangeCategory}
+              className="w-full bg-white h-[40px] rounded-[5px] px-[10px] my-2"
+            >
+              <option value="all">Todos</option>
+              {categories.map((category) => {
+                return (
+                  <option key={category.id} value={category.title}>
+                    {category.name}
+                  </option>
+                );
+              })}
+            </select>
           </div>
         </li>
       </ul>
