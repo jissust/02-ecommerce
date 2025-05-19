@@ -9,14 +9,14 @@ function Carousel({
   slidesToShow,
   speed,
   dots,
-  responsive
+  responsive,
 }: {
   images: string[];
   autoplay?: boolean;
   type?: string;
-  slidesToShow?:number;
-  speed?:number;
-  dots?:boolean;
+  slidesToShow?: number;
+  speed?: number;
+  dots?: boolean;
   responsive?: {
     breakpoint: number;
     settings: {
@@ -34,21 +34,35 @@ function Carousel({
     speed: speed ?? 2000,
     autoplaySpeed: 4000,
     pauseOnHover: false,
-    responsive: responsive ?? []
+    responsive: responsive ?? [],
   };
 
   return (
     <Slider {...settings}>
-      {images.map((img, index) => ( 
-        
+      {images.map((img, index) => (
         <div key={index}>
           {type === "text" ? (
             <Link to={`/category/${images[index].id}`}>
-            <div className="w-[200px] h-[200px] flex items-center justify-center bg-gray-500 text-white text-4xl rounded-[50%] mx-auto cursor-pointer">
-              <h2>
-              {images[index].title }
-              </h2>
-            </div>
+              <div className="w-[200px] h-[200px] flex items-center justify-center bg-gray-500 text-white text-4xl rounded-[50%] mx-auto cursor-pointer">
+                <h2>{images[index].title}</h2>
+              </div>
+            </Link>
+          ) : type == "card" ? (
+            <Link
+              key={images[index].id}
+              className="shadow-md bg-[#FFFFFF]"
+              to={`/product/${images[index].id}`}
+            >
+              <div className="px-3">
+                <img src={images[index].images[0]} alt={images[index].title} />
+                <div className="p-5 bg-white h-full">
+                  <small className="text-gray-500">
+                    {images[index].category.name}
+                  </small>
+                  <h3 className="font-bold">{images[index].title}</h3>
+                  <div>${images[index].price}</div>
+                </div>
+              </div>
             </Link>
           ) : (
             <img

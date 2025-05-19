@@ -1,24 +1,17 @@
 import Carousel from "../Carousel/Carousel";
 import "./Home.css";
 import {categories} from "../../mocks/categories.json";
+import { useContext } from "react";
+import { ProductsContext } from "../../context/products";
 
 function Home() {
+  const { products } = useContext(ProductsContext);
+  console.log(products)
   const images = [
     "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
     "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
     "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
   ];
-
-  /*const categories = [
-    "Categoria 1",
-    "Categoria 2",
-    "Categoria 3",
-    "Categoria 4",
-    "Categoria 5",
-    "Categoria 6",
-    "Categoria 7",
-    "Categoria 8",
-  ];*/
   
   return (
     <section>
@@ -38,6 +31,7 @@ function Home() {
           ]}
         />
       </section>
+      {/*
       <section className="slider-container py-[60px]">
         <h1 className="text-center pb-[30px]">Categorías</h1>
         <div className="container mx-auto">
@@ -74,6 +68,44 @@ function Home() {
         />
         </div>
       </section>
+*/}
+      <section className="slider-container py-[60px]">
+        <h1 className="text-center pb-[30px]">Ultimos productos</h1>
+        <div className="container mx-auto">
+        <Carousel
+          images={products}
+          autoplay={true}
+          type="card"
+          slidesToShow={4}
+          speed={3000}
+          dots={false}
+          responsive={[
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+              },
+            },
+            {
+                breakpoint: 800,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
+                },
+              },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            },
+          ]}
+        />
+        </div>
+      </section>
+
     </section>
   );
 }
