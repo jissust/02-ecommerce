@@ -5,11 +5,13 @@ import { CartContext } from "../../context/cart";
 import Carousel from "../Carousel/Carousel";
 import PagoButton from "../PagoButton/PagoButton";
 import { CartIcon } from "../Icons/Icons";
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
 function ProductDetatil() {
   const { id } = useParams();
   const { cart, setCart } = useContext(CartContext);
   const { products } = useContext(ProductsContext);
+  
   const navigate = useNavigate();
   const product = products.find((p) => p.id === Number(id));
 
@@ -21,7 +23,7 @@ function ProductDetatil() {
 
   return (
     <div className="container mx-auto pb-[50px] px-[30px] py-[90px]">
-      <section className="py-5">Migas</section>
+      <Breadcrumbs idProduct={id} />
       <section>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
           <div>
