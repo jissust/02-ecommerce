@@ -5,8 +5,10 @@ import { CartContext } from "../../context/cart";
 function PagoButton({ products }) {
   const { cart } = useContext(CartContext)
   const [preferenceId, setPreferenceId] = useState("");
-  
+  const [loading, setLoading] = useState(false) 
+
   const createPreference = () => {
+    setLoading(true)
     fetch("http://localhost:3000/create_preference", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -15,6 +17,7 @@ function PagoButton({ products }) {
       .then((res) => res.json())
       .then((data) => {
         setPreferenceId(data.id);
+        setLoading(false)
       });
   };
 
@@ -25,7 +28,7 @@ function PagoButton({ products }) {
   return (
     <>
       <button
-        className="w-full bg-black text-white px-[25px] py-[20px] rounded-xl cursor-pointer"
+        className={`w-full bg-black text-white px-[25px] py-[20px] rounded-xl cursor-pointer ${ loading || preferenceId ? 'opacity-50 pointer-events-none':'' }`}
         onClick={createPreference}
       >
         Comprar ahora
