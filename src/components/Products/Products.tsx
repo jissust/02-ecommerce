@@ -1,15 +1,21 @@
 import { Product } from "../../type/type";
 import useFilters from "../../hooks/useFilters.tsx";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../context/products.tsx";
-import { Link } from "react-router-dom";
 import Card from "../Card/Card.tsx";
+import SkeletonCard from "../Card/Skeleton/SkeletonCard.tsx";
 
 function Products() {
   const { products } = useContext(ProductsContext);
   const { filterProducts } = useFilters();
   const filteredProducts = filterProducts(products);
   const [visibleCount, setVisibleCount] = useState(12);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timeout);
+  }, [products]);
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 12);
@@ -17,21 +23,26 @@ function Products() {
 
   return (
     <section className="py-5 w-full">
+        {loading
+        ? ( <div> 
+            <div className="m-3 skeleton-card"><SkeletonCard count={4} /></div>
+            <div className="m-3 skeleton-card"><SkeletonCard count={4} /></div>
+            <div className="m-3 skeleton-card"><SkeletonCard count={4} /></div>
+          </div> ) : 
+        (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {filteredProducts.slice(0, visibleCount).map((product: Product) => {
-          return (
-            <Card product={product} />
-          );
-        })}
+          {filteredProducts.slice(0, visibleCount).map((product: Product) => (
+            <Card key={product.id} product={product} />
+          ))}
+      </div>
+        )}
         
-        {filteredProducts.length === 0 && (
+        {!loading && filteredProducts.length === 0 && (
           <h3 className="col-span-4 w-full text-center">
             No hay productos cargados para esta categoria.
           </h3>
         )}
-
-      </div>
-      {visibleCount < filteredProducts.length && (
+      {!loading && visibleCount < filteredProducts.length && (
         <div className="text-center mt-10 w-full">
           <button
             onClick={handleLoadMore}

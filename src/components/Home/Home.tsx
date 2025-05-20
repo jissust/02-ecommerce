@@ -1,27 +1,36 @@
 import Carousel from "../Carousel/Carousel";
-import "./Home.css";
-import {categories} from "../../mocks/categories.json";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../context/products";
+import SkeletonCard from "../Card/Skeleton/SkeletonCard.tsx";
+import "./Home.css";
 
 function Home() {
+  const [loading, setLoading] = useState(true);
   const { products } = useContext(ProductsContext);
 
   const images = [
     {
       url: "/product/1",
-      image: "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg"
+      image:
+        "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
     },
     {
       url: "/product/2",
-      image: "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg"
+      image:
+        "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
     },
     {
       url: "/product/3",
-      image: "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg"
+      image:
+        "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
     },
   ];
-  
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timeout);
+  }, [products]);
+
   return (
     <section>
       <section id="home-carousel" className="slider-container">
@@ -82,40 +91,46 @@ function Home() {
       <section className="slider-container py-[60px]">
         <h1 className="text-center pb-[30px]">Ultimos productos</h1>
         <div className="container mx-auto">
-        <Carousel
-          images={products.slice(-6)}
-          autoplay={true}
-          type="card"
-          slidesToShow={4}
-          speed={3000}
-          dots={false}
-          responsive={[
-            {
-              breakpoint: 1200,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 1,
-              },
-            },
-            {
-                breakpoint: 800,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
+          {loading && (
+            <div className="m-3 skeleton-card">
+              <SkeletonCard count={4} />
+            </div>
+          )}
+          {!loading && (
+            <Carousel
+              images={products.slice(-6)}
+              autoplay={true}
+              type="card"
+              slidesToShow={4}
+              speed={3000}
+              dots={false}
+              responsive={[
+                {
+                  breakpoint: 1200,
+                  settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                  },
                 },
-              },
-            {
-              breakpoint: 480,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-              },
-            },
-          ]}
-        />
+                {
+                  breakpoint: 800,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                  },
+                },
+                {
+                  breakpoint: 480,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                  },
+                },
+              ]}
+            />
+          )}
         </div>
       </section>
-
     </section>
   );
 }
