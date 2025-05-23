@@ -1,24 +1,22 @@
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../context/cart";
+import { useEffect, useState } from "react";
 import { RemoveIcon } from "../Icons/Icons";
 import SkeletonCheckoutDetail from "./Skeleton/SkeletonCheckoutDetail.tsx";
+import { ProductCart } from "../../type/type.ts";
+import useCart from "../../hooks/useCart.tsx";
 
 function CheckoutDetail() {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, setCart } = useCart();
   const [loading, setLoading] = useState(true);
 
-  const resumen = cart.map((item) => ({
-    title: item.title,
-    total: item.quantity * item.price,
-  }));
-
-  const removeFromCart = (indexToRemove) => {
-    const updatedCart = cart.filter((_, index) => index !== indexToRemove);
+  const removeFromCart = (indexToRemove: number) => {
+    const updatedCart = cart.filter(
+      (_: ProductCart, index: number) => index !== indexToRemove
+    );
     setCart(updatedCart);
   };
 
-  const updateQuantity = (indexToUpdate, newQuantity) => {
-    const updatedCart = cart.map((item, index) =>
+  const updateQuantity = (indexToUpdate: number, newQuantity: number) => {
+    const updatedCart = cart.map((item: ProductCart, index: number) =>
       index === indexToUpdate
         ? { ...item, quantity: Number(newQuantity) }
         : item
@@ -42,7 +40,7 @@ function CheckoutDetail() {
       </div>
       {loading && <SkeletonCheckoutDetail />}
       {!loading &&
-        cart.map((item, index) => (
+        cart.map((item: ProductCart, index: number) => (
           <div key={index} className="grid grid-cols-4 gap-4 py-2 border-b">
             <span className="text-[12px] sm:text-[16px]">{item.title}</span>
             <span>
@@ -51,7 +49,7 @@ function CheckoutDetail() {
                 min="1"
                 className="border px-2 py-1 rounded w-16 bg-white text-center"
                 value={item.quantity}
-                onChange={(e) => updateQuantity(index, e.target.value)}
+                onChange={(e) => updateQuantity(index, Number(e.target.value))}
               />
             </span>
             <span>${item.price}</span>

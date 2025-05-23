@@ -1,10 +1,14 @@
-import { useContext } from "react";
+import useProducts from "../../hooks/useProducts";
 import { Link } from "react-router-dom";
-import { ProductsContext } from "../../context/products";
+import { Product } from "../../type/type";
 
-function Breadcrumbs({ idProduct }) {
-  const { products } = useContext(ProductsContext);
-  const product = products.find((p) => p.id === Number(idProduct));
+interface IdProductProps {
+  IdProduct: number
+}
+
+function Breadcrumbs({ IdProduct }: IdProductProps) {
+  const { products } = useProducts();
+  const product = products.find((p) => p.id === Number(IdProduct)) as Product;
 
   return (
     <nav className="text-sm mb-4">

@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
-import { CartContext } from "../../context/cart";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartIcon } from "../Icons/Icons";
 import CheckoutDetail from "../CheckoutDetail/CheckoutDetail";
+import useCart from "../../hooks/useCart";
 
 function CartButton() {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart } = useCart();
   const [menuCart, setMenuCart] = useState(false);
 
   const OpenCloseMenuCart = () => {

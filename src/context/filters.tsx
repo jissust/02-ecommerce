@@ -1,9 +1,16 @@
 import { createContext, useState, ReactNode } from "react";
+import { Filter } from '../type/type'
 
 interface FilterProviderProps {
   children: ReactNode;
 }
-export const FiltersContext = createContext();
+
+interface FiltersContextType {
+  filters: Filter;
+  setFilters: React.Dispatch<React.SetStateAction<Filter>>
+}
+
+export const FiltersContext = createContext<FiltersContextType | undefined>(undefined);
 
 export function FilterProvider({ children }:FilterProviderProps) {
   const [filters, setFilters] = useState({

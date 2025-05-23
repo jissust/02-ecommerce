@@ -1,17 +1,23 @@
 import { useParams } from "react-router-dom";
 import { categories } from "../../mocks/categories.json";
-import { useContext, useEffect, useState } from "react";
-import Products from "../Products/Products";
-import { FiltersContext } from "../../context/filters";
+import { useEffect, useState } from "react";
 import { Filter } from "../../type/type";
+import useFilters from "../../hooks/useFilters";
+import Products from "../Products/Products";
+
+type CategoryType = {
+  id: number;
+  title: string;
+  name: string;
+}
 
 function Category() {
   const { id } = useParams();
-  const [category, setCategory] = useState();
-  const { filters, setFilters } = useContext(FiltersContext);
+  const [category, setCategory] = useState<CategoryType| undefined>();
+  const { setFilters } = useFilters();
 
   useEffect(() => {
-    const updateCategory = categories.filter((_) => _.id === Number(id));
+    const updateCategory = categories.find((_) => _.id === Number(id));
     setCategory(updateCategory);
   }, []);
 
@@ -19,14 +25,14 @@ function Category() {
     if (category !== undefined) {
       setFilters((prevState: Filter) => ({
         ...prevState,
-        category: category[0].title,
+        category: category.title,
       }));
     }
   }, [category]);
 
   return (
     <section className="container mx-auto py-[90px] px-[30px]">
-      <h1 className="text-center w-full">{category !== undefined && category[0].title}</h1>
+      <h1 className="text-center w-full">{category !== undefined && category.title}</h1>
       <Products />
     </section>
   );

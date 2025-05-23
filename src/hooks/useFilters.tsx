@@ -3,7 +3,13 @@ import { FiltersContext } from "../context/filters.tsx";
 import { Product } from "../type/type.tsx";
 
 function useFilters() {
-  const { filters, setFilters } = useContext(FiltersContext);
+  const context = useContext(FiltersContext);
+
+  if (context === undefined) {
+    throw new Error("useFilters must be used within a FiltersProvider");
+  }
+
+  const {filters, setFilters } = context;
 
   const filterProducts = (products: Array<Product>) => {
     return products.filter((product: Product) => {

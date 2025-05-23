@@ -1,12 +1,12 @@
 import { Product } from "../../type/type";
 import useFilters from "../../hooks/useFilters.tsx";
-import { useContext, useEffect, useState } from "react";
-import { ProductsContext } from "../../context/products.tsx";
+import { useEffect, useState } from "react";
 import Card from "../Card/Card.tsx";
 import SkeletonCard from "../Card/Skeleton/SkeletonCard.tsx";
+import useProducts from "../../hooks/useProducts.tsx";
 
 function Products() {
-  const { products } = useContext(ProductsContext);
+  const { products } = useProducts();
   const { filterProducts } = useFilters();
   const filteredProducts = filterProducts(products);
   const [visibleCount, setVisibleCount] = useState(12);

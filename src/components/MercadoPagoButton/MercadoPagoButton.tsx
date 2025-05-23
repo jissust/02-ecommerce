@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 
-function MercaPagoButton({preferenceIdProduct}) {
+interface preferenceIdProductProps {
+  preferenceIdProduct: string
+}
+
+function MercaPagoButton({preferenceIdProduct}: preferenceIdProductProps) {
   const [preferenceId] = useState(preferenceIdProduct);
 
   useEffect(() => {

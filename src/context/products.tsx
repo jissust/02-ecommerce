@@ -1,11 +1,17 @@
 import { createContext, useState, ReactNode } from "react";
 import { products as initialProducts } from "../mocks/products.json";
+import { Product } from "../type/type";
 
 interface ProductsProviderProps {
   children: ReactNode;
 }
 
-export const ProductsContext = createContext();
+interface ProductsContextType {
+  products: Product[];
+  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+}
+
+export const ProductsContext = createContext<ProductsContextType | undefined>(undefined);
 
 export function ProductsProvider({ children }: ProductsProviderProps) {
   const [products, setProducts] = useState(initialProducts);

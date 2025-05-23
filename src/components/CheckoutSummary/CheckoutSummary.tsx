@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../context/cart";
+import { useEffect, useState } from "react";
 import PagoButton from "../PagoButton/PagoButton";
 import SkeletonCheckoutSummary from "./Skeleton/SkeletonCheckoutSummary";
+import useCart from "../../hooks/useCart";
 
 function CheckoutSummary() {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart } = useCart();
   const [loading, setLoading] = useState(true);
 
   const resumen = cart.map((item) => ({

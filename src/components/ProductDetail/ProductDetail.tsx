@@ -1,24 +1,25 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ProductsContext } from "../../context/products";
-import { CartContext } from "../../context/cart";
-import Carousel from "../Carousel/Carousel";
+import { Product, ProductCart } from "../../type/type";
 import { CartIcon } from "../Icons/Icons";
+import Carousel from "../Carousel/Carousel";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import SkeletonProductDetailCarousel from "./Skeleton/SkeletonProductDetailCarousel";
 import SkeletonProductDetailInfo from "./Skeleton/SkeletonProductDetailInfo";
+import useCart from "../../hooks/useCart";
+import useProducts from "../../hooks/useProducts";
 
 function ProductDetatil() {
   const { id } = useParams();
-  const { cart, setCart } = useContext(CartContext);
-  const { products } = useContext(ProductsContext);
+  const { setCart } = useCart();
+  const { products } = useProducts();
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
-  const product = products.find((p) => p.id === Number(id));
+  const product = products.find((p: Product) => p.id === Number(id)) as Product;
 
   const addCart = () => {
-    const productWithQuantity = { ...product, quantity: 1 };
+    const productWithQuantity: ProductCart = { ...product, quantity: 1 };
     setCart((prevCart) => [...prevCart, productWithQuantity]);
     navigate("/checkout");
   };
@@ -30,7 +31,7 @@ function ProductDetatil() {
 
   return (
     <div className="container mx-auto pb-[50px] px-[30px] py-[90px]">
-      <Breadcrumbs idProduct={id} />
+      <Breadcrumbs IdProduct={Number(id)} />
       <section>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
           <div>

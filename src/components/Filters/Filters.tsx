@@ -5,11 +5,11 @@ import { categories } from "../../mocks/categories.json";
 
 function Filters() {
   const { filters, setFilters } = useFilters();
-  console.log(categories);
+  
   const handleChangeMaxPrice = (event: ChangeEvent<HTMLInputElement>) => {
     setFilters((prevState: Filter) => ({
       ...prevState,
-      maxPrice: event?.target.value,
+      maxPrice: Number(event?.target.value),
     }));
   };
 

@@ -1,7 +1,7 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import Card from "../Card/Card";
+import { Product } from "../../type/type";
 
 function Carousel({
   images,
@@ -12,7 +12,7 @@ function Carousel({
   dots,
   responsive,
 }: {
-  images: string[];
+  images: (Product | string)[];
   autoplay?: boolean;
   type?: string;
   slidesToShow?: number;
@@ -42,29 +42,29 @@ function Carousel({
     <Slider {...settings}>
       {images.map((img, index) => (
         <div key={index}>
-          {type === "text" ? (
-            <Link to={`/category/${images[index].id}`}>
-              <div className="w-[200px] h-[200px]">
-                <h2>{images[index].title}</h2>
-              </div>
-            </Link>
-          ) : type == "card" ? (
-            <Card product={images[index]} />
-          ) : type == "home" ? (
-            <Link to={img.url} className="cursor-pointer">
-              <img
-                src={img.image}
-                alt={`slide-${index}`}
-                className="w-full h-auto md:h-[100dvh] object-cover"
-              />
-            </Link>
-          ) : (
+          {typeof img === "string" ? (
             <img
               src={img}
               alt={`slide-${index}`}
               className="w-full h-auto md:h-[100dvh] object-cover"
             />
-          )}
+          ) : type === "text" ? (
+            <Link to={`/category/${img.id}`}>
+              <div className="w-[200px] h-[200px]">
+                <h2>{img.title}</h2>
+              </div>
+            </Link>
+          ) : type === "card" ? (
+            <Card product={img} />
+          ) : type === "home" ? (
+            <Link to={`/product/${img.id}`} className="cursor-pointer">
+              <img
+                src={img.images[0]}
+                alt={`slide-${index}`}
+                className="w-full h-auto md:h-[100dvh] object-cover"
+              />
+            </Link>
+          ) : null}
         </div>
       ))}
     </Slider>

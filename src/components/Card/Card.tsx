@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { Product } from "../../type/type";
 
-function Card({ product }) {
+interface PagoButtonProps {
+  product: Product;
+}
+
+function Card({ product }: PagoButtonProps) {
   return (
     <div className="m-3">
       <Link

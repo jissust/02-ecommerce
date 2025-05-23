@@ -12,7 +12,7 @@ import Failure from "./components/Redirect/Failure";
 import Pending from "./components/Redirect/Pending";
 import Success from "./components/Redirect/Success";
 import Category from "./components/Category/Category";
-import  { SkeletonTheme } from 'react-loading-skeleton';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 function App() {
   return (

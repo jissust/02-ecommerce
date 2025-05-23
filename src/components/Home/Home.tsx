@@ -1,30 +1,12 @@
+import { useEffect, useState } from "react";
 import Carousel from "../Carousel/Carousel";
-import { useContext, useEffect, useState } from "react";
-import { ProductsContext } from "../../context/products";
 import SkeletonCard from "../Card/Skeleton/SkeletonCard.tsx";
+import useProducts from "../../hooks/useProducts.tsx";
 import "./Home.css";
 
 function Home() {
   const [loading, setLoading] = useState(true);
-  const { products } = useContext(ProductsContext);
-
-  const images = [
-    {
-      url: "/product/1",
-      image:
-        "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
-    },
-    {
-      url: "/product/2",
-      image:
-        "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
-    },
-    {
-      url: "/product/3",
-      image:
-        "https://as01.epimg.net/masdeporte/imagenes/2023/04/30/reportajes/1682876077_304314_1682886639_noticiareportajes_grande.jpg",
-    },
-  ];
+  const { products } = useProducts()
 
   useEffect(() => {
     const timeout = setTimeout(() => setLoading(false), 2000);
@@ -36,7 +18,7 @@ function Home() {
       <section id="home-carousel" className="slider-container">
         <Carousel
           type="home"
-          images={images}
+          images={products.slice(-3)}
           autoplay={true}
           dots={false}
           responsive={[

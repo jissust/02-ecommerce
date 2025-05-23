@@ -1,5 +1,5 @@
-import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
+import { createRoot } from "react-dom/client";
 import { FilterProvider } from "./context/filters.tsx";
 import { ProductsProvider } from "./context/products.tsx";
 import { CartProvider } from "./context/cart.tsx";
