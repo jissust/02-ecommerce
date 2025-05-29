@@ -20,7 +20,7 @@ function Products() {
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 12);
   };
-
+  
   return (
     <section className="py-5 w-full">
         {loading

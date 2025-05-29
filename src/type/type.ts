@@ -16,7 +16,7 @@ export type Product = {
     image: string;
     creationAt: string;
     updatedAt: string;
-  };
+  }[];
   creationAt: string;
   updatedAt: string;
 };
@@ -41,7 +41,7 @@ export type ProductCart = {
     image: string;
     creationAt: string;
     updatedAt: string;
-  };
+  }[];
   creationAt: string;
   updatedAt: string;
   quantity: number;

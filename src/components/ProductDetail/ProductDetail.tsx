@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Product, ProductCart } from "../../type/type";
 import { CartIcon } from "../Icons/Icons";
 import Carousel from "../Carousel/Carousel";
@@ -31,7 +31,7 @@ function ProductDetatil() {
 
   return (
     <div className="container mx-auto pb-[50px] px-[30px] py-[90px]">
-      { !loading && <Breadcrumbs product={product} /> }
+      {/*{!loading && <Breadcrumbs product={product} />} */}
       <section>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
           <div>
@@ -41,9 +41,24 @@ function ProductDetatil() {
           {loading && <SkeletonProductDetailInfo />}
           {!loading && (
             <div>
-              <small>{product.categories.name}</small>
               <h1>{product.title}</h1>
-              <h2 className="mb-[20px]">$ {product.price}</h2>
+              <div className="flex gap-4 mb-[20px]">
+                <h2>$ {product.price}</h2>
+                <div className="flex gap-1">
+                  {product.categories.map((p, i) => {
+                    return (
+                      <Link
+                        to={`/category/${p.id}`}
+                        className="text-white bg-black p-2 rounded-lg cursor-pointer text-[12px] flex items-center justify-items-center
+"
+                        key={i}
+                      >
+                        {p.name}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
               <p className="mb-[20px]">{product.description}</p>
               <div className="mb-[20px]">Variantes: talle, color.</div>
               <button

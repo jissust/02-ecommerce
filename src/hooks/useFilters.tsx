@@ -15,7 +15,7 @@ function useFilters() {
     return products.filter((product: Product) => {
       return (
         (filters.maxPrice == 0 || product.price <= filters.maxPrice) &&
-        (filters.category == "all" || product.categories[0].name == filters.category)
+        (filters.category == "all" || product.categories.some((cat) => cat.name === filters.category))
       );
     });
   };
