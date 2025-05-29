@@ -1,11 +1,12 @@
 import { ChangeEvent } from "react";
-import useFilters from "../../hooks/useFilters";
 import { Filter } from "../../type/type";
-import { categories } from "../../mocks/categories.json";
+import useFilters from "../../hooks/useFilters";
+import useGetCategories from "../../api/useGetCategories.tsx";
 
 function Filters() {
   const { filters, setFilters } = useFilters();
-  
+  const { categories, loading } = useGetCategories();
+
   const handleChangeMaxPrice = (event: ChangeEvent<HTMLInputElement>) => {
     setFilters((prevState: Filter) => ({
       ...prevState,
@@ -47,7 +48,8 @@ function Filters() {
               className="w-full bg-white h-[40px] rounded-[5px] px-[10px] my-2"
             >
               <option value="all">Todos</option>
-              {categories.map((category) => {
+              
+              {!loading && categories !== null && categories.map((category) => {
                 return (
                   <option key={category.id} value={category.title}>
                     {category.name}

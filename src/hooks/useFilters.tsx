@@ -10,12 +10,12 @@ function useFilters() {
   }
 
   const {filters, setFilters } = context;
-
+  
   const filterProducts = (products: Array<Product>) => {
     return products.filter((product: Product) => {
       return (
         (filters.maxPrice == 0 || product.price <= filters.maxPrice) &&
-        (filters.category == "all" || product.category.name == filters.category)
+        (filters.category == "all" || product.categories[0].name == filters.category)
       );
     });
   };

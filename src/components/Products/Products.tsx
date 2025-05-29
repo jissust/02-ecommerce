@@ -11,7 +11,7 @@ function Products() {
   const filteredProducts = filterProducts(products);
   const [visibleCount, setVisibleCount] = useState(12);
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     const timeout = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timeout);

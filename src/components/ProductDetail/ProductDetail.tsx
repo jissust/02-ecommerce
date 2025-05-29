@@ -31,7 +31,7 @@ function ProductDetatil() {
 
   return (
     <div className="container mx-auto pb-[50px] px-[30px] py-[90px]">
-      <Breadcrumbs IdProduct={Number(id)} />
+      { !loading && <Breadcrumbs product={product} /> }
       <section>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
           <div>
@@ -41,7 +41,7 @@ function ProductDetatil() {
           {loading && <SkeletonProductDetailInfo />}
           {!loading && (
             <div>
-              <small>{product.category.name}</small>
+              <small>{product.categories.name}</small>
               <h1>{product.title}</h1>
               <h2 className="mb-[20px]">$ {product.price}</h2>
               <p className="mb-[20px]">{product.description}</p>

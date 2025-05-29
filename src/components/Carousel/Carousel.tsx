@@ -59,12 +59,20 @@ function Carousel({
           ) : type === "home" ? (
             <Link to={`/product/${img.id}`} className="cursor-pointer">
               <img
-                src={img.images[0]}
+                src={`${import.meta.env.VITE_PUBLIC_BACKEND_URL}${
+                  img.images[0].url
+                }`}
                 alt={`slide-${index}`}
                 className="w-full h-auto md:h-[100dvh] object-cover"
               />
             </Link>
-          ) : null}
+          ) : (
+            <img
+              src={`${import.meta.env.VITE_PUBLIC_BACKEND_URL}${img.url}`}
+              alt={`slide-${index}`}
+              className="w-full h-auto md:h-[100dvh] object-cover"
+            />
+          )}
         </div>
       ))}
     </Slider>

@@ -1,11 +1,15 @@
 export type Product = {
   id: number;
+  documentId: number;
+  isFeatured: boolean;
+  active: boolean;
   price: number;
   slug: string;
   description: string;
   title: string;
   images: Array<string>;
-  category: {
+  url: string;
+  categories: {
     id: number;
     name: string;
     slug: string;
@@ -29,7 +33,8 @@ export type ProductCart = {
   description: string;
   title: string;
   images: Array<string>;
-  category: {
+  url: string;
+  categories: {
     id: number;
     name: string;
     slug: string;

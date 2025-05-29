@@ -1,23 +1,21 @@
 import { useState  } from "react";
 import { SearchIcon } from "../Icons/Icons";
-import productsData from "../../mocks/products.json";
+//import productsData from "../../mocks/products.json";
 import useProducts from "../../hooks/useProducts.tsx";
 
 function Search() {
   const [searchValue, setSearchValue] = useState("");
-  const {setProducts} = useProducts();
+  const {setProducts, productsOriginal } = useProducts();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSearchValue(value)
-    handleClick()
   }
 
   const handleClick = () =>{
-    const filtered = productsData.products.filter((product) =>
+    const filtered = productsOriginal.filter((product) =>
       product.title.toLowerCase().includes(searchValue.toLowerCase())
     );
-    console.log(filtered)
     setProducts(filtered)
   }
 
