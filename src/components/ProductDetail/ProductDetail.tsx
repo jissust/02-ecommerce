@@ -3,11 +3,12 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { Product, ProductCart } from "../../type/type";
 import { CartIcon } from "../Icons/Icons";
 import Carousel from "../Carousel/Carousel";
-import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
+/* import Breadcrumbs from "../Breadcrumbs/Breadcrumbs"; */
 import SkeletonProductDetailCarousel from "./Skeleton/SkeletonProductDetailCarousel";
 import SkeletonProductDetailInfo from "./Skeleton/SkeletonProductDetailInfo";
 import useCart from "../../hooks/useCart";
 import useProducts from "../../hooks/useProducts";
+import { toast, ToastContainer } from "react-toastify";
 
 function ProductDetatil() {
   const { id } = useParams();
@@ -21,6 +22,13 @@ function ProductDetatil() {
   const addCart = () => {
     const productWithQuantity: ProductCart = { ...product, quantity: 1 };
     setCart((prevCart) => [...prevCart, productWithQuantity]);
+    
+    toast.success('Producto agregado!', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false
+    })
+
     navigate("/checkout");
   };
 
@@ -71,6 +79,7 @@ function ProductDetatil() {
           )}
         </div>
       </section>
+
     </div>
   );
 }

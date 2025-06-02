@@ -3,6 +3,7 @@ import { RemoveIcon } from "../Icons/Icons";
 import SkeletonCheckoutDetail from "./Skeleton/SkeletonCheckoutDetail.tsx";
 import { ProductCart } from "../../type/type.ts";
 import useCart from "../../hooks/useCart.tsx";
+import { toast } from "react-toastify";
 
 function CheckoutDetail() {
   const { cart, setCart } = useCart();
@@ -13,6 +14,12 @@ function CheckoutDetail() {
       (_: ProductCart, index: number) => index !== indexToRemove
     );
     setCart(updatedCart);
+    
+    toast.error('Producto eliminado!', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false
+    })
   };
 
   const updateQuantity = (indexToUpdate: number, newQuantity: number) => {
@@ -22,6 +29,13 @@ function CheckoutDetail() {
         : item
     );
     setCart(updatedCart);
+
+    toast.success('Producto actualizado!', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false
+    })
+    
   };
 
   useEffect(() => {
@@ -54,7 +68,7 @@ function CheckoutDetail() {
             </span>
             <span>${item.price}</span>
             <span>
-              <button onClick={() => removeFromCart(index)}>
+              <button onClick={() => removeFromCart(index)} className="cursor-pointer">
                 <RemoveIcon color="#000000" />
               </button>
             </span>

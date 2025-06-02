@@ -13,6 +13,7 @@ import Pending from "./components/Redirect/Pending";
 import Success from "./components/Redirect/Success";
 import Category from "./components/Category/Category";
 import { SkeletonTheme } from 'react-loading-skeleton';
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/failure" element={<Failure />} />
         <Route path="/category/:id" element={<Category />}/>
       </Routes>
+      <ToastContainer />
       </main>
       <Footer />
       </SkeletonTheme>
