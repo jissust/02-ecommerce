@@ -13,12 +13,14 @@ function Card({ product }: PagoButtonProps) {
         className="shadow-md"
         to={`/product/${product.id}`}
       >
+        {product.images[0] && product.images[0].url && (
         <img
           src={`${import.meta.env.VITE_PUBLIC_BACKEND_URL}${
             product.images[0].url
           }`}
           alt={product.title}
         />
+        )}
         <div className="p-5 bg-white">
           <h3 className="font-bold">
             {product.title.length > 30

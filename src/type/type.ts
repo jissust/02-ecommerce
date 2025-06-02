@@ -7,7 +7,9 @@ export type Product = {
   slug: string;
   description: string;
   title: string;
-  images: Array<string>;
+  images: Array<{
+    url: string
+  }>;
   url: string;
   categories: {
     id: number;
@@ -32,7 +34,9 @@ export type ProductCart = {
   slug: string;
   description: string;
   title: string;
-  images: Array<string>;
+  images: Array<{
+    url: string
+  }>;
   url: string;
   categories: {
     id: number;
@@ -46,3 +50,11 @@ export type ProductCart = {
   updatedAt: string;
   quantity: number;
 };
+
+export type Category = {
+  id: number;
+  name: string;
+  slug: string;
+  image: string;
+  active:boolean
+}

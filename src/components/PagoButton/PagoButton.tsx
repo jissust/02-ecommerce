@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Product } from "../../type/type";
+import { ProductCart } from "../../type/type";
 import useCart from "../../hooks/useCart";
 import MercaPagoButton from "../MercadoPagoButton/MercadoPagoButton";
 
 interface PagoButtonProps {
-  products: Product[];
+  products: ProductCart[];
 }
 
 function PagoButton({ products }: PagoButtonProps) {

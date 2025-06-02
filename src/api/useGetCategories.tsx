@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { Category } from "../type/type";
 
 function useGetCategories() {
   const url = `${
     import.meta.env.VITE_PUBLIC_BACKEND_URL
   }/api/categories?filters[active][$eq]=true`;
-  const [categories, setCategories] = useState(null);
+  const [categories, setCategories] = useState<Category[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>("");
 

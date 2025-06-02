@@ -1,4 +1,4 @@
-import useProducts from "../../hooks/useProducts";
+/*import useProducts from "../../hooks/useProducts";
 import { Link } from "react-router-dom";
 import { Product } from "../../type/type";
 
@@ -25,4 +25,4 @@ function Breadcrumbs({ product }: Product) {
   );
 }
 
-export default Breadcrumbs;
+export default Breadcrumbs;*/

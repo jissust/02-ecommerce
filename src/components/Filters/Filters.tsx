@@ -51,7 +51,7 @@ function Filters() {
               
               {!loading && categories !== null && categories.map((category) => {
                 return (
-                  <option key={category.id} value={category.title}>
+                  <option key={category.id} value={category.name}>
                     {category.name}
                   </option>
                 );
