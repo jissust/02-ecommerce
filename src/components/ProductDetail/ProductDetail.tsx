@@ -8,7 +8,7 @@ import SkeletonProductDetailCarousel from "./Skeleton/SkeletonProductDetailCarou
 import SkeletonProductDetailInfo from "./Skeleton/SkeletonProductDetailInfo";
 import useCart from "../../hooks/useCart";
 import useProducts from "../../hooks/useProducts";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 function ProductDetatil() {
   const { id } = useParams();
