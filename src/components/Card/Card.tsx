@@ -7,10 +7,10 @@ interface PagoButtonProps {
 
 function Card({ product }: PagoButtonProps) {
   return (
-    <div className="m-3">
+    <div className="m-3 bg-white">
       <Link
         key={product.id}
-        className="shadow-md"
+        className="shadow-md h-full"
         to={`/product/${product.id}`}
       >
         {product.images[0] && product.images[0].url && (
